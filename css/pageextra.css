@@ -1,0 +1,327 @@
+/*reset*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*fin du reset*/
+
+.home{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f2f2f21e;
+}
+.home:hover{
+    background: rgb(24, 24, 24);
+}
+.home svg{
+    width: 25px;
+    fill:#f2f2f2;
+    transition:  0.2s ease-in-out;
+}
+.home:hover svg{
+    fill: aqua;
+}
+
+body{
+    font-family:Raleway, Helvetica, sans-serif;
+    color: #f2f2f2;
+}
+
+h1{
+    position: absolute;
+    left: 50%;
+    font-weight: bolder;
+    font-size: xxx-large;
+    text-decoration: underline;
+}
+
+/*****fin de l'icone maison***************************/
+/*extra*/
+
+.containerex{
+    position: absolute;
+    top: 300px;
+    left: 400px;
+
+}
+
+.commandes{
+    position: absolute;
+    font-size: xx-large;
+    width: 275px;
+    height: 50px;
+    top: -50px;
+    left: -20px;
+    background: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+.commandes h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.objets{
+    position: absolute;
+    font-size: xx-large;
+    width: 150px;
+    height: 50px;
+    top: -50px;
+    left: 590px;
+    background: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+.objets h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.commandes:hover{
+    text-decoration: underline;
+    border: 2px solid #000;
+    color: aqua;
+  }
+.objets:hover{
+    text-decoration: underline;
+    border: 2px solid #000;
+    color: aqua;
+}
+
+.sous-menu-c{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    z-index: index -1;
+    top: 35px;
+    left: 0;
+    background:#222;
+    color: #fff;
+    opacity: 0;
+    transition: transform 0.4s ease-in-out;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+    border-left:2px solid #000;
+    border-right:2px solid #000;
+  }
+  .sous-menu-o{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    z-index: index -1;
+    top: 35px;
+    left: 0;
+    background:#222;
+    color: #fff;
+    opacity: 0;
+    transition: transform 0.4s ease-in-out;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+    border-left:2px solid #000;
+    border-right:2px solid #000;
+  }
+  .commandes:hover .sous-menu-c{
+    transform: translateY(20px);
+    opacity: unset;
+  }
+  .objets:hover .sous-menu-o{
+    transform: translateY(20px);
+    opacity: unset;
+  }
+
+  .sous-menu-c h3 {
+    color: #f2f2f2;
+    font-family: Open Sans, sans-serif;
+    background: #a0a0a08e;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    text-decoration: underline;
+  }
+  .sous-menu-c ul {
+    list-style-type: none;
+  }
+  .sous-menu-c li {
+    padding: 15px 20px;
+  }
+  .sous-menu-c li:hover h3{
+    background: #a0a0a08e;
+  }
+  .sous-menu-c li a {
+    color : #f2f2f2;
+    text-decoration: none;
+    font-family: Open Sans, sans-serif;
+  }
+  .sous-menu-o h3 {
+    color: #f2f2f2;
+    font-family: Open Sans, sans-serif;
+    background: #a0a0a08e;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    text-decoration: underline;
+  }
+  .sous-menu-o ul {
+    list-style-type: none;
+  }
+  .sous-menu-o li {
+    padding: 15px 20px;
+  }
+  .sous-menu-o li:hover h3{
+    background: #a0a0a08e;
+  }
+  .sous-menu-o li a {
+    color : #f2f2f2;
+    text-decoration: none;
+    font-family: Open Sans, sans-serif;
+  }
+
+/*fin haut de la page*/
+  /*bas de page*/
+  /*pour qd on clik sur un lien et que ca ns envie sur la meme page il faut utiliser une "ID" */
+ 
+  #man-cons{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px;
+  }
+  #man-cons h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #man-cons p{
+    padding: 5px 5px;
+}
+
+#inp-comp{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px; 
+}
+#inp-comp h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #inp-comp p{
+    padding: 5px 5px;
+}
+
+#aides{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px;
+}
+#aides h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #aides p{
+    padding: 5px 5px;
+}
+
+#p-a-e{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px;
+}
+#p-a-e h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #p-a-e p{
+    padding: 5px 5px;
+}
+
+#remonter-ex{
+    opacity: 0;
+    width: 100px;
+    position: relative;
+    top: 0px;
+    left: 650px;
+    z-index: -1;
+    font-weight: bold;
+    color: aqua;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px 10px;
+
+}
+.txtcont-ex:hover #remonter-ex{
+    opacity: 1;
+}
+#remonter-ex:hover{
+    background: #a0a0a08e;
+}
+#remonter-ex a{
+    color : #f2f2f2;
+    text-decoration: none;
+    font-family: Open Sans, sans-serif;
+}
+#remonter-ex:hover a{
+    color: aqua;
+    text-decoration: underline;
+}
+
+.txtcont-ex{
+    background: rgb(24, 24, 24);
+    padding: 20px 20px;
+    height: 180;
+    width: 1300px;
+    position: relative;
+    top: 750px;
+    left: 150px;
+    transform: translatX(-50%);
+    z-index: -2;
+    border: 2px solid #000;
+}
+.txtcont-ex h2 {
+  text-decoration: underline;
+}
+
+/*img GameCube qui pop*/
+
+.sub-nav-gc{
+  cursor: pointer;
+}
+.sub-nav-gc:hover{
+  color: aqua;
+}
+.gc{
+  border-radius: 10%;
+  height: 250px;
+  width: 30%;
+  background: rgba(211, 156, 55, 0);
+  position: absolute;
+  top: -110%;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  opacity: unset;
+}
+.sub-nav-gc:hover .gc{
+  transform: translateY(-45%);
+  background: url('../img/img_GC.jpg');
+  background-position: center;
+  background-size:cover;
+  background-blend-mode: multiply;
+  opacity: unset;
+}
+
+/*fin img GameCube qui pop*/ /*puis faire la même mise en forme pour les manettes étranges*/
