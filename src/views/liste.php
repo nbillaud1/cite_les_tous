@@ -21,6 +21,6 @@
     </div>
     <div class="guess-container">
         <input type="text" id="guess-zone" placeholder="Entrez votre guess ici !"> <!--Faire que l'on puisse apuyer sur entrer ou cliquer sur un bouton pour valider le guess-->
-        <button class="btn-valider">Valider</button>
+        <button id="btn-valider">Valider</button>
     </div>
 </body>
