@@ -1,0 +1,37 @@
+/* Styles pour le conteneur principal */
+.grille-persos {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); 
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styles pour chaque personnage (assurez-vous que l'image et le texte sont centrés) */
+.perso-container {
+    /* Pour s'assurer que le contenu est bien centré dans la cellule de la grille */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Styles pour le bloc 'perso' si nécessaire */
+.perso {
+    color: black;
+}
+
+#guess-zone{
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.guess-container{
+    top: 20px;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    position :fixed;
+}

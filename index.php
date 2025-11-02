@@ -7,7 +7,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'accueil';
 
 $quizSSBController = new QuizSSBController();
 switch ($action) {
-    case 'acceuil':
+    case 'accueil':
         require_once('src/controllers/HomeController.php');
         break;
     case 'startSSB':
@@ -15,3 +15,5 @@ switch ($action) {
         $quizSSBController->getTiming();
         break;
 }
+
+require_once("src/views/footer.php");

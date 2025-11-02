@@ -5,4 +5,3 @@
 
         <a href="?action=startSSB"><button>Lancer le Quizz SSB !</button></a>
     </body>
-</html>
