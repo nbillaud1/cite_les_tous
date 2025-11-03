@@ -1,5 +1,5 @@
 <body>
-    <h2>Trouve vite tous les personnages de Super Smash Bros Ultimate ! </h2>
+    <h2>Trouve vite tous les personnages de Super Smash Bros Ultimate ! Nombre de personnages restants : <b id="nb-persos"></b> </h2>
     <a href="?action=accueil"><button>Retour à l'acceuil</button></a>
     <div class="grille-persos">
         <!-- Boucle permettant de lister les persos -->
@@ -22,5 +22,6 @@
     <div class="guess-container">
         <input type="text" id="guess-zone" placeholder="Entrez votre guess ici !"> <!--Faire que l'on puisse apuyer sur entrer ou cliquer sur un bouton pour valider le guess-->
         <button id="btn-valider">Valider</button>
+        <p id="errorPerso"></p>
     </div>
 </body>
