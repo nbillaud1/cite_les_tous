@@ -12,18 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     majNbPerso();
     if (nbPersos !== 0){
-        persos.forEach(perso => {
-
-            perso.addEventListener('mouseover', (event) => {
-                perso.style.background = 'lightgray';
-                perso.style.cursor = 'pointer';
-            });
-
-            perso.addEventListener('mouseout', (event) => {
-                perso.style.background = '';
-                perso.style.cursor = '';
-            });
-        });
 
         guessZone.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
@@ -44,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         valide = false;
         persos.forEach(perso => {
             nom = perso.querySelector('p').getAttribute('nom-reel');
-            if (valeurSaisie === nom){
+            if (valeurSaisie.toLowerCase() === nom.toLowerCase()){
                 montrerPerso(perso);
                 errorGuess.textContent = "";
                 guessZone.value = "";
