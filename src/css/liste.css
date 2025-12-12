@@ -1,37 +1,337 @@
-/* Styles pour le conteneur principal */
-.grille-persos {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr); 
-    gap: 10px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+:root {
+    --primary-color: #ff4757;
+    --secondary-color: #2f3542;
+    --accent-color: #1e90ff;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #2d3436;
 }
 
-/* Styles pour chaque personnage (assurez-vous que l'image et le texte sont centrés) */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Info */
+.header-info {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-top: 100px; /* Space for fixed guess bar */
+}
+
+.header-info h2 {
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.header-info button {
+    background: white;
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.header-info button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#btn-pause {
+    margin-right: 15px;
+}
+
+.grille-persos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto 100px auto;
+    padding: 20px;
+    transition: filter 0.3s;
+}
+
+.grille-persos.blurred {
+    filter: blur(15px);
+    pointer-events: none;
+}
+
 .perso-container {
-    /* Pour s'assurer que le contenu est bien centré dans la cellule de la grille */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Styles pour le bloc 'perso' si nécessaire */
+.perso-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.perso-container.found {
+    background: #ffffff;
+    border: 3px solid #2ed573;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .perso {
-    color: black;
+    text-align: center;
+    width: 100%;
 }
 
-#guess-zone{
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
+.perso img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #dfe4ea;
+    transition: transform 0.3s;
 }
 
-.guess-container{
+.perso-container.found img {
+    border-color: #2ed573;
+}
+
+.perso p {
+    margin: 10px 0 0 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.guess-container {
+    position: fixed;
     top: 20px;
     left: 50%;
-    display: flex;
     transform: translateX(-50%);
-    position :fixed;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    z-index: 1000;
+    width: auto;
+    max-width: 90%;
+}
+
+#guess-zone {
+    border: 2px solid transparent;
+    background: #f1f2f6;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+    width: 250px;
+}
+
+#guess-zone:focus {
+    background: white;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(30, 144, 255, 0.1);
+}
+
+#btn-valider {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#btn-valider:hover {
+    background: #0984e3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.3);
+}
+
+#errorPerso {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 20px;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+
+#errorPerso.visible {
+    opacity: 1;
+    bottom: -50px;
+}
+
+#errorPerso.error {
+    background: #ff4757;
+}
+
+#errorPerso.success {
+    background: #2ed573;
+}
+
+/* Home Page Specifics */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* Animations */
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#titre{
+    font-size: 4.5rem;
+    display: flex;
+    margin: 20px auto;
+    color: #ff4757;
+    background: #ffffff;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-container h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    animation: fadeInDown 1s ease;
+}
+
+.home-container p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    animation: fadeIn 1.5s ease;
+}
+
+.home-container button {
+    background: white;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    animation: fadeInUp 1s ease 0.5s backwards;
+}
+
+.home-container button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Back to Top Button */
+#btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#btn-back-to-top:hover {
+    background: #0984e3;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    margin-top: auto; /* Pushes footer to bottom if flex container is used */
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer p {
+    margin: 5px 0;
+    opacity: 0.9;
 }
