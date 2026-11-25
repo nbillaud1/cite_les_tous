@@ -12,12 +12,21 @@
                 <button id="btn-reveler" class="btn" type="button">Voir ceux qui manquaient</button>
                 <a class="btn btn--ghost" href="?action=startSSB">Réessayer</a>
             </div>
+            <div class="fin" id="fin-victoire" hidden>
+                <a class="btn" href="?action=startSSB">Rejouer</a>
+                <a class="btn btn--ghost" href="ssbu-tips/index.html">Retour aux astuces</a>
+            </div>
             <p id="errorPerso" role="status"></p>
         </div>
         <div class="hud-time">
             <b id="chrono">15:00</b>
             <button id="btn-pause" class="btn btn--ghost" type="button">Pause</button>
         </div>
+    </div>
+
+    <div class="banniere" id="banniere" hidden>
+        <p>Victoire !</p>
+        <span id="temps-final"></span>
     </div>
 
     <div class="grille-persos">

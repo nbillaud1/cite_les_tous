@@ -53,14 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (chronoElement) chronoElement.classList.toggle('urgent', remainingTime < 120);
 
-        let minutes = Math.floor(remainingTime / 60);
-        let seconds = remainingTime % 60;
+        if(chronoElement) chronoElement.textContent = formater(remainingTime);
+    }
 
-        let formattedTime = 
-            (minutes < 10 ? "0" + minutes : minutes) + ":" + 
-            (seconds < 10 ? "0" + seconds : seconds);
-        
-        if(chronoElement) chronoElement.textContent = formattedTime;
+    // 125 -> "02:05"
+    function formater(secondes) {
+        return String(Math.floor(secondes / 60)).padStart(2, '0') + ":" + String(secondes % 60).padStart(2, '0');
     }
 
     if (btnPause) {
@@ -112,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
         persos.forEach(perso => {
             let nom = perso.querySelector('p').getAttribute('nom-reel');
             if (valeurSaisie.toLowerCase() === nom.toLowerCase() && !foundPersos.has(nom.toLowerCase())){
-                montrerPerso(perso);
                 errorGuess.textContent = "";
+                montrerPerso(perso);
                 guessZone.value = "";
                 valide = true;
                 foundPersos.add(nom.toLowerCase());
@@ -125,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             afficherMessage("Personnage invalide ou déjà trouvé", "error");
         }
         else if (valide) {
-            errorGuess.className = "";
+            if (nbPersos > 0) errorGuess.className = ""; // sinon on effacerait le message de victoire
             guessZone.classList.add('ok');
             setTimeout(() => guessZone.classList.remove('ok'), 500);
         }
@@ -171,11 +169,29 @@ document.addEventListener('DOMContentLoaded', () => {
         txtNbPersos.textContent = nbPersos;
         document.querySelector('.hud').style.setProperty('--done', 1 - nbPersos / persos.length);
         // errorGuess.textContent = "";
-        if (nbPersos === 0){
-            afficherMessage("Bravo! Vous avez réussi !", "success");
-            clearInterval(timerInterval);
-            lancerConfettis();
-        }
+        if (nbPersos === 0) gagner();
+    }
+
+    function gagner(){
+        clearInterval(timerInterval);
+        let tempsMis = Math.floor((Date.now() - startTime + savedTime) / 1000);
+        guessZone.disabled = true;
+        btnValiderGuess.disabled = true;
+        btnPause.disabled = true;
+        document.querySelector('.hud').classList.add('gagne');
+        document.getElementById('fin-victoire').hidden = false;
+        afficherMessage("Bravo, vous les avez tous trouvés !", "success");
+
+        // Vague de lumière sur toutes les cases, puis bannière et confettis
+        persos.forEach((perso, i) => perso.closest('.perso-container').style.setProperty('--i', i));
+        grille.classList.add('victoire');
+        setTimeout(() => grille.classList.remove('victoire'), 4000);
+
+        let banniere = document.getElementById('banniere');
+        document.getElementById('temps-final').textContent = "Tous trouvés en " + formater(tempsMis);
+        banniere.hidden = false;
+        setTimeout(() => banniere.hidden = true, 4200);
+        setTimeout(lancerConfettis, 500);
     }
 
     let messageTimeout;
@@ -190,6 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000);
         }
     }
+
+    // Les couleurs des sections de SSBU Tips (voir theme.css)
+    const COULEURS_SITE = ['#e5262f', '#2f73e6', '#de3a8f', '#f4a614', '#20a84c', '#18bfd3', '#eef0f4'];
 
     function lancerConfettis() {
         const canvas = document.createElement('canvas');
@@ -215,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 y: Math.random() * H - H,
                 r: Math.random() * 15 + 5,
                 d: Math.random() * 150 + 10,
-                color: `hsl(${Math.random()*360}, 100%, 50%)`,
+                color: COULEURS_SITE[i % COULEURS_SITE.length],
                 tilt: Math.floor(Math.random() * 10) - 10,
                 tiltAngleIncremental: Math.random() * 0.07 + 0.05,
                 tiltAngle: 0
