@@ -8,6 +8,10 @@
         <div class="hud-guess">
             <input type="text" id="guess-zone" placeholder="Nom d'un combattant" aria-label="Nom d'un combattant" autocomplete="off" autofocus>
             <button id="btn-valider" class="btn" type="button">Valider</button>
+            <div class="fin" id="fin" hidden>
+                <button id="btn-reveler" class="btn" type="button">Voir ceux qui manquaient</button>
+                <a class="btn btn--ghost" href="?action=startSSB">Réessayer</a>
+            </div>
             <p id="errorPerso" role="status"></p>
         </div>
         <div class="hud-time">

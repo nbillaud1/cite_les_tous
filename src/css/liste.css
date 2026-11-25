@@ -107,7 +107,9 @@
   grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
   gap: 10px;
   padding: 26px clamp(18px, 5vw, 56px) 64px;
-  transition: filter .3s;
+  outline: 3px solid transparent;
+  outline-offset: -3px;
+  transition: filter .3s, outline-color .8s, box-shadow .8s;
 }
 .grille-persos.blurred { filter: blur(14px); pointer-events: none; }
 
@@ -130,8 +132,8 @@
 }
 
 /* Combattant pas encore trouvé : un point d'interrogation à la place du portrait */
-.perso-container:not(.found) img { visibility: hidden; }
-.perso-container:not(.found) .perso::before {
+.perso-container:not(.found, .missed) img { visibility: hidden; }
+.perso-container:not(.found, .missed) .perso::before {
   content: "?";
   position: absolute;
   inset: 0 0 30px;
@@ -181,3 +183,31 @@
   #btn-back-to-top { bottom: 78px; }
   .grille-persos { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
 }
+
+/* ---------- Fin de partie perdue ---------- */
+.hud.perdu #guess-zone, .hud.perdu #btn-valider { display: none; }
+.fin:not([hidden]) { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.fin .btn { font-size: 1.15rem; padding: 9px 22px 9px 16px; }
+#errorPerso.perdu { background: var(--smash); }
+
+/* La grille tremble et s'encadre de rouge quelques secondes */
+.grille-persos.defaite {
+  outline-color: var(--smash);
+  box-shadow: inset 0 0 70px color-mix(in srgb, var(--smash) 35%, transparent);
+  animation: tremble .55s cubic-bezier(.36, .07, .19, .97);
+  transition: filter .3s; /* cadre rouge immédiat, puis fondu à la sortie (transition de base) */
+}
+@keyframes tremble {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-10px); }
+  40%, 60% { transform: translateX(10px); }
+}
+
+/* Combattants manquants, révélés un par un */
+.perso-container.missed {
+  background: linear-gradient(165deg, color-mix(in srgb, var(--smash) 45%, var(--panel)) 0 45%, var(--panel) 45%);
+  box-shadow: inset 0 0 0 3px var(--smash);
+  animation: pop .45s cubic-bezier(.2, 1.4, .4, 1);
+}
+.perso-container.missed p { color: #fff; background: var(--smash); font-weight: 800; }

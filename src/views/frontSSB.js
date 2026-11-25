@@ -48,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (remainingTime <= 0) {
             remainingTime = 0;
             clearInterval(timerInterval);
-            guessZone.disabled = true;
-            btnValiderGuess.disabled = true;
-            afficherMessage("Temps écoulé ! C'est perdu...", "error");
+            perdre();
         }
 
         if (chronoElement) chronoElement.classList.toggle('urgent', remainingTime < 120);
@@ -133,24 +131,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function montrerPerso(perso){
+    // Affiche le portrait et le nom ; classe = 'found' (trouvé) ou 'missed' (révélé après la défaite)
+    function reveler(perso, classe){
         let img = perso.querySelector('img');
         let nom = perso.querySelector('p');
+        img.src = img.getAttribute('data-image-reelle');
+        nom.textContent = nom.getAttribute('nom-reel');
+        perso.style.pointerEvents = 'none';
+        perso.closest('.perso-container').classList.add(classe);
+    }
 
-        if (img) {
-            let urlReelle = img.getAttribute('data-image-reelle'); 
-            let vrai_nom = nom.getAttribute('nom-reel');
-            
-            if (urlReelle) {
-                img.src = urlReelle;
-                perso.style.pointerEvents = 'none';
-                nom.textContent = vrai_nom;
-                perso.closest('.perso-container').classList.add('found');
-            }
-        }
+    function montrerPerso(perso){
+        reveler(perso, 'found');
         nbPersos --;
         majNbPerso();
     }
+
+    function perdre(){
+        guessZone.disabled = true;
+        btnValiderGuess.disabled = true;
+        btnPause.disabled = true;
+        document.querySelector('.hud').classList.add('perdu');
+        document.getElementById('fin').hidden = false;
+        afficherMessage("Temps écoulé ! C'est perdu...", "perdu");
+        grille.classList.add('defaite');
+        setTimeout(() => grille.classList.remove('defaite'), 3000);
+    }
+
+    document.getElementById('btn-reveler').addEventListener('click', (event) => {
+        event.currentTarget.disabled = true;
+        let manquants = [...persos].filter(perso => !perso.closest('.perso-container').classList.contains('found'));
+        manquants.forEach((perso, i) => setTimeout(() => {
+            reveler(perso, 'missed');
+            perso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, i * 150));
+    });
 
     function majNbPerso(){
         txtNbPersos.textContent = nbPersos;
