@@ -1,10 +1,8 @@
-        <h1 id="titre">Cite Les Tous</h1>
-        <div class="home-container">
-            <h1 class="titre"> Bienvenue sur ce superbe site !</h1>
-            <p>Choisissez votre licence et lancer le quizz quand vous êtes prêt ! <br>
-            Pour rappel, vous devez trouver tous les personnages de la licence dans le temps imparti.<br>
-            Bonne chance !</p>
-
-            <a href="?action=startSSB"><button>Lancer le Quizz SSB !</button></a>
-            <a href="ssbu-tips/index.html"><button>Voir les astuces SSBU</button></a>
-        </div>
+        <header class="page-head quiz-intro">
+            <h1 class="page-title">Cite les tous</h1>
+            <p class="page-lead">Retrouvez les 86 combattants de Super Smash Bros. Ultimate en moins de 15 minutes. Tapez un nom, validez, et sa case se révèle. Les majuscules ne comptent pas.</p>
+            <div class="quiz-actions">
+                <a class="btn" href="?action=startSSB">Lancer le quiz</a>
+                <a class="btn btn--ghost" href="ssbu-tips/index.html">Voir les astuces</a>
+            </div>
+        </header>

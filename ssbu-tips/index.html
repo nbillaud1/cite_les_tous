@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SSBU Tips</title>
-	<link rel="stylesheet" href="css/stylesmashtips.css">
-	<link rel="stylesheet" href="css/responsive.css">
-	</head>
-	<body>
-		<h1 class="h1">SUPER SMASH BROS ULTIMATE TIPS :</h1>
-		<nav class="slide-nav">
-			<div class="wrapper">
-				<div class="logo">
-					<img src="img/logo-smash.jpg" height="50" width="50">
-
-				</div>
-				<div class="plus">
-					<div class="dot"></div>
-					<div class="dot"></div>
-					<div class="dot"></div>
-				
-					<div class="sub-nav-3pts">
-						<h2>INFOS :</h2>
-						<ul>
-							<li>
-								<a href="https://www.nintendo.fr/">Site officiel Nintendo</a>
-							</li>
-							<li>
-								<a href="https://www.nintendo.fr/Jeux/Jeux-Nintendo-Switch/Super-Smash-Bros-Ultimate-1395713.html#">Voir les offres</a>
-							</li>
-							<li>
-								<a href="https://dashfight.com/ssbu/rankings">Classement top players</a>
-							</li>
-							<li>
-								<a href="https://blog.start.gg/ultranks-first-official-ssbu-tier-list-4a35bf3dcfc3">Tier list officielle</a>
-							</li>
-							<li>
-								<a href="../index.php">Quiz : Cite les tous</a>
-							</li>
-						</ul>
-					</div>
-					</div>
-				</div>
+	<meta name="description" content="Astuces, modes de jeu et quiz pour Super Smash Bros. Ultimate.">
+	<link rel="stylesheet" href="css/theme.css">
+	<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+	<nav class="rail" aria-label="Navigation principale">
+		<a class="rail-link rail-link--home" href="index.html" style="--c:var(--text)" aria-current="page"><svg class="i"><use href="img/icons.svg#logo"/></svg><span class="rail-label">Accueil</span></a>
+		<a class="rail-link" href="smash.html" style="--c:var(--smash)"><svg class="i"><use href="img/icons.svg#smash"/></svg><span class="rail-label">Smash</span></a>
+		<a class="rail-link" href="extra.html" style="--c:var(--extra)"><svg class="i"><use href="img/icons.svg#extra"/></svg><span class="rail-label">Extra</span></a>
+		<a class="rail-link" href="coffre.html" style="--c:var(--coffre)"><svg class="i"><use href="img/icons.svg#coffre"/></svg><span class="rail-label">Coffre</span></a>
+		<a class="rail-link" href="en-ligne.html" style="--c:var(--en-ligne)"><svg class="i"><use href="img/icons.svg#en-ligne"/></svg><span class="rail-label">En ligne</span></a>
+		<a class="rail-link" href="esprits.html" style="--c:var(--esprits)"><svg class="i"><use href="img/icons.svg#esprits"/></svg><span class="rail-label">Esprits</span></a>
+		<a class="rail-link" href="../index.php" style="--c:var(--quiz)"><svg class="i"><use href="img/icons.svg#quiz"/></svg><span class="rail-label">Quiz</span></a>
+		<details class="rail-infos">
+			<summary aria-label="Liens utiles"><svg class="i"><use href="img/icons.svg#infos"/></svg></summary>
+			<div class="rail-infos-panel">
+				<p>Liens utiles</p>
+				<ul>
+					<li><a href="https://www.nintendo.fr/">Site officiel Nintendo</a></li>
+					<li><a href="https://www.nintendo.fr/Jeux/Jeux-Nintendo-Switch/Super-Smash-Bros-Ultimate-1395713.html">Fiche du jeu</a></li>
+					<li><a href="https://dashfight.com/ssbu/rankings">Classement des meilleurs joueurs</a></li>
+					<li><a href="https://blog.start.gg/ultranks-first-official-ssbu-tier-list-4a35bf3dcfc3">Tier list officielle</a></li>
+				</ul>
 			</div>
-		</nav>
-		<div class="smash"><a href="smash.html"><img src="img/menu-smash.jpg" class="smash_img">
-		<div class="spt"></div>
-		<div class="linep-s">
-			<div class="line-s"></div>
-			<div class="triangle-s"></div>
-			<div class="other-line-s"></div>
-			<div class="black-line-s"></div>
-			<div class="triangle-black-s"></div>
-		</div>
-		</a>
-		</div>
+		</details>
+	</nav>
 
-		<div class="extra">
-			<a href="extra.html"><img src="img/menu-extra.jpg" class="extra_img">
-		<div class="expt"></div>
-		<div class="linep-ex">
-			<div class="line-ex"></div>
-			<div class="triangle-ex"></div>
-			<div class="other-line-ex"></div>
-			<div class="black-line-ex"></div>
-			<div class="triangle-black-ex"></div>
-		</div>
-		</a>
-		</div>
+	<main>
+		<header class="home-head">
+			<h1>SSBU Tips</h1>
+			<p>Astuces, modes de jeu et quiz pour Super Smash Bros. Ultimate.</p>
+		</header>
 
-		<div class="coffre"><a href="coffre.html"><img src="img/menu-coffre.png" class="coffre_img">
-		<div class="cpt"></div>
-		<div class="linep-c">
-			<div class="line-c"></div>
-			<div class="triangle-c"></div>
-			<div class="other-line-c"></div>
-			<div class="black-line-c"></div>
-			<div class="triangle-black-c"></div>
-		</div>
-		</a>
-		</div>
+		<div class="menu">
+			<a class="tile tile--smash" href="smash.html">
+				<svg class="i tile-icon"><use href="img/icons.svg#smash"/></svg>
+				<span class="tile-name">Smash</span>
+				<span class="tile-desc">Personnages et stages</span>
+			</a>
+			<a class="tile tile--quiz" href="../index.php">
+				<svg class="i tile-icon"><use href="img/icons.svg#quiz"/></svg>
+				<span class="tile-name">Quiz</span>
+				<span class="tile-desc">Cite les 86 combattants</span>
+			</a>
+			<a class="tile tile--esprits" href="esprits.html">
+				<svg class="i tile-icon"><use href="img/icons.svg#esprits"/></svg>
+				<span class="tile-name">Esprits</span>
+				<span class="tile-desc">L'aventure et le tableau des esprits</span>
+			</a>
+			<a class="tile tile--extra" href="extra.html">
+				<svg class="i tile-icon"><use href="img/icons.svg#extra"/></svg>
+				<span class="tile-name">Extra</span>
+				<span class="tile-desc">Manettes, techniques et objets</span>
+			</a>
+			<a class="tile tile--coffre" href="coffre.html">
+				<svg class="i tile-icon"><use href="img/icons.svg#coffre"/></svg>
+				<span class="tile-name">Coffre</span>
+				<span class="tile-desc">Boutique et défis</span>
+			</a>
+			<a class="tile tile--en-ligne" href="en-ligne.html">
+				<svg class="i tile-icon"><use href="img/icons.svg#en-ligne"/></svg>
+				<span class="tile-name">En ligne</span>
+				<span class="tile-desc">Règles, tournois et classement</span>
+			</a>
 
-		<div class="en-ligne"><a href="en-ligne.html"><img src="img/menu-en-ligne.jpg" class="en-ligne_img">
-		<div class="elpt"></div>
-		<div class="linep-el">
-			<div class="line-el"></div>
-			<div class="triangle-el"></div>
-			<div class="other-line-el"></div>
-			<div class="black-line-el"></div>
-			<div class="triangle-black-el"></div>
+			<div class="hub" aria-hidden="true">
+				<svg class="wires" viewBox="0 0 300 498">
+					<path class="wire wire--base" pathLength="1" d="M0 75H50L105 171"/>
+					<path class="wire wire--base" pathLength="1" d="M0 249H60"/>
+					<path class="wire wire--base" pathLength="1" d="M0 423H50L105 327"/>
+					<path class="wire wire--base" pathLength="1" d="M300 75H250L195 171"/>
+					<path class="wire wire--base" pathLength="1" d="M300 249H240"/>
+					<path class="wire wire--base" pathLength="1" d="M300 423H250L195 327"/>
+					<path class="wire wire--glow wire--smash" style="--c:var(--smash)" pathLength="1" d="M0 75H50L105 171"/>
+					<path class="wire wire--glow wire--quiz" style="--c:var(--quiz)" pathLength="1" d="M0 249H60"/>
+					<path class="wire wire--glow wire--esprits" style="--c:var(--esprits)" pathLength="1" d="M0 423H50L105 327"/>
+					<path class="wire wire--glow wire--extra" style="--c:var(--extra)" pathLength="1" d="M300 75H250L195 171"/>
+					<path class="wire wire--glow wire--coffre" style="--c:var(--coffre)" pathLength="1" d="M300 249H240"/>
+					<path class="wire wire--glow wire--en-ligne" style="--c:var(--en-ligne)" pathLength="1" d="M300 423H250L195 327"/>
+				</svg>
+				<div class="emblem"><svg><use href="img/icons.svg#logo"/></svg></div>
+			</div>
 		</div>
-		</a>
-		</div>
+	</main>
 
-		<div class="esprits"><a href="esprits.html"><img src="img/menu-esprits.jpg" class="esprits_img">
-		<div class="ept"></div>
-		<div class="linep-e">
-			<div class="line-e"></div>
-			<div class="triangle-e"></div>
-			<div class="other-line-e"></div>
-			<div class="black-line-e"></div>
-			<div class="triangle-black-e"></div>
-		</div>
-		</a>
-		</div>
-
-		<a href="index.html"><img src="img/logo-ssbu.jpg" class="logo-centre"></a>
-	</body>
+	<footer class="footer">SSBU Tips, site de fan non affilié à Nintendo.</footer>
+</body>
 </html>

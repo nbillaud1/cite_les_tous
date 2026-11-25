@@ -1,7 +1,7 @@
 # Cite Les Tous + SSBU Tips
 
 - **Cite Les Tous** (`index.php`, `src/`) : quiz PHP/MySQL, retrouver les 86 personnages de Super Smash Bros Ultimate en 15 minutes.
-- **SSBU Tips** (`ssbu-tips/`) : site HTML/CSS d'astuces sur le jeu.
+- **SSBU Tips** (`ssbu-tips/`) : site HTML/CSS d'astuces sur le jeu. Les deux partagent le thème `ssbu-tips/css/theme.css`.
 
 ## Lancer en local (WAMP)
 

@@ -1,6 +1,4 @@
-<footer class="footer">
-    <p>&copy; <?php echo date("Y"); ?> - Cite les Tous - </p>
-    <p>Développé avec <span style="color: #ff4757;">&hearts;</span> pour les fans de Nintendo.</p>
-</footer>
+    </main>
+    <footer class="footer">Cite les tous, un quiz SSBU Tips. Site de fan non affilié à Nintendo.</footer>
 </body>
 </html>

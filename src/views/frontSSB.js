@@ -53,11 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             afficherMessage("Temps écoulé ! C'est perdu...", "error");
         }
 
-        if (remainingTime < 120) {
-            if (chronoElement) chronoElement.style.color = "#ff4757";
-        } else {
-            if (chronoElement) chronoElement.style.color = "";
-        }
+        if (chronoElement) chronoElement.classList.toggle('urgent', remainingTime < 120);
 
         let minutes = Math.floor(remainingTime / 60);
         let seconds = remainingTime % 60;
@@ -132,12 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (valide) {
             errorGuess.className = "";
-            guessZone.style.backgroundColor = "#2ed573";
-            guessZone.style.borderColor = "#2ed573";
-            setTimeout(() => {
-                guessZone.style.backgroundColor = "";
-                guessZone.style.borderColor = "";
-            }, 500);
+            guessZone.classList.add('ok');
+            setTimeout(() => guessZone.classList.remove('ok'), 500);
         }
     }
 
