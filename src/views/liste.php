@@ -1,4 +1,3 @@
-<body>
     <div class="header-info">
         <h2>Trouve vite tous les personnages de Super Smash Bros Ultimate ! <br> Personnages restants : <b id="nb-persos"></b> </h2>
         <h3>Temps restant : <span id="chrono">15:00</span></h3>

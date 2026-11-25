@@ -12,7 +12,6 @@ switch ($action) {
         break;
     case 'startSSB':
         $quizSSBController->index("SSB");
-        $quizSSBController->getTiming();
         break;
 }
 

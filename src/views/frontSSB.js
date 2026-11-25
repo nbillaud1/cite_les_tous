@@ -1,10 +1,11 @@
 // Écoute le chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
 
-    let nbPersos = 86;
-    let txtNbPersos = document.getElementById('nb-persos');
-
     let persos = document.querySelectorAll('.perso');
+    let nbPersos = persos.length;
+    let txtNbPersos = document.getElementById('nb-persos');
+    if (!txtNbPersos) return; // le script est chargé sur toutes les pages, mais ne sert qu'au quiz
+
 
     let guessZone = document.getElementById('guess-zone');
     let btnValiderGuess = document.getElementById('btn-valider');
@@ -113,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let foundPersos = new Set();
     function validerGuess(valeurSaisie){
-        valide = false;
+        let valide = false;
         persos.forEach(perso => {
             let nom = perso.querySelector('p').getAttribute('nom-reel');
             if (valeurSaisie.toLowerCase() === nom.toLowerCase() && !foundPersos.has(nom.toLowerCase())){
