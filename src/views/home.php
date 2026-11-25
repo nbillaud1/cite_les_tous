@@ -6,4 +6,5 @@
             Bonne chance !</p>
 
             <a href="?action=startSSB"><button>Lancer le Quizz SSB !</button></a>
+            <a href="ssbu-tips/ecran%20d%27acceuil%20smash%20tips.html"><button>Voir les astuces SSBU</button></a>
         </div>
