@@ -1,0 +1,285 @@
+.home{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f2f2f21e;
+}
+.home:hover{
+    background: rgb(24, 24, 24);
+}
+.home svg{
+    width: 25px;
+    fill:#f2f2f2;
+    transition:  0.2s ease-in-out;
+}
+.home:hover svg{
+    fill: aqua;
+}
+
+body{
+    font-family:Raleway, Helvetica, sans-serif;
+    color: #f2f2f2;
+}
+
+h1{
+    position: absolute;
+    left: 50%;
+    font-weight: bolder;
+    font-size: xxx-large;
+    text-decoration: underline;
+}
+
+/*****fin de l'icone maison***************************/
+/*en-ligne*/
+
+.containerel{
+    position: absolute;
+    top: 300px;
+    left: 400px;
+
+}
+
+.regles{
+    position: absolute;
+    font-size: xx-large;
+    width: 200px;
+    height: 50px;
+    top: -50px;
+    left: -20px;
+    background: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+.regles h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fonctionnement{
+    position: absolute;
+    font-size: xx-large;
+    width: 320px;
+    height: 50px;
+    top: -50px;
+    left: 590px;
+    background: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+.fonctionnement h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.regles:hover{
+    text-decoration: underline;
+    border: 2px solid #000;
+    color: aqua;
+  }
+.fonctionnement:hover{
+    text-decoration: underline;
+    border: 2px solid #000;
+    color: aqua;
+}
+
+.sous-menu-r{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    z-index: index -1;
+    top: 35px;
+    left: 0;
+    background:#222;
+    color: #fff;
+    opacity: 0;
+    transition: transform 0.4s ease-in-out;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+    border-left:2px solid #000;
+    border-right:2px solid #000;
+  }
+  .sous-menu-f{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    z-index: index -1;
+    top: 35px;
+    left: 0;
+    background:#222;
+    color: #fff;
+    opacity: 0;
+    transition: transform 0.4s ease-in-out;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+    border-left:2px solid #000;
+    border-right:2px solid #000;
+  }
+  .regles:hover .sous-menu-r{
+    transform: translateY(20px);
+    opacity: unset;
+  }
+  .fonctionnement:hover .sous-menu-f{
+    transform: translateY(20px);
+    opacity: unset;
+  }
+
+  .sous-menu-r h3 {
+    color: #f2f2f2;
+    font-family: Open Sans, sans-serif;
+    background: #a0a0a08e;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    text-decoration: underline;
+  }
+  .sous-menu-r ul {
+    list-style-type: none;
+  }
+  .sous-menu-r li {
+    padding: 15px 20px;
+  }
+  .sous-menu-r li:hover h3{
+    background: #a0a0a08e;
+  }
+  .sous-menu-r li a {
+    color : #f2f2f2;
+    text-decoration: none;
+    font-family: Open Sans, sans-serif;
+  }
+  .sous-menu-f h3 {
+    color: #f2f2f2;
+    font-family: Open Sans, sans-serif;
+    background: #a0a0a08e;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    text-decoration: underline;
+  }
+  .sous-menu-f ul {
+    list-style-type: none;
+  }
+  .sous-menu-f li {
+    padding: 15px 20px;
+  }
+  .sous-menu-f li:hover h3{
+    background: #a0a0a08e;
+  }
+  .sous-menu-f li a {
+    color : #f2f2f2;
+    text-decoration: none;
+    font-family: Open Sans, sans-serif;
+  }
+
+/*fin haut de la page*/
+  /*bas de page*/
+  /*pour qd on clik sur un lien et que ca ns envie sur la meme page il faut utiliser une "ID" */
+ 
+  #ch-r{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px;
+  }
+  #ch-r h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #ch-r p{
+    padding: 5px 5px;
+}
+
+#tournois{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px; 
+}
+#tournois h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #tournois p{
+    padding: 5px 5px;
+}
+
+
+#classement{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px;
+}
+#classement h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #classement p{
+    padding: 5px 5px;
+}
+
+#creations{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    top: 0px;
+    left: 0px;
+}
+#creations h2{
+    font-size: x-large;
+    padding: 10px;
+  }
+  #creations p{
+    padding: 5px 5px;
+}
+
+#remonter-el{
+    opacity: 0;
+    width: 100px;
+    position: relative;
+    top: 0px;
+    left: 650px;
+    z-index: -1;
+    font-weight: bold;
+    color: aqua;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px 10px;
+
+}
+.txtcont-el:hover #remonter-el{
+    opacity: 1;
+}
+#remonter-el:hover{
+    background: #a0a0a08e;
+}
+#remonter-el a{
+    color : #f2f2f2;
+    text-decoration: none;
+    font-family: Open Sans, sans-serif;
+}
+#remonter-el:hover a{
+    color: aqua;
+    text-decoration: underline;
+}
+
+.txtcont-el{
+    background: rgb(24, 24, 24);
+    padding: 20px 20px;
+    height: 180;
+    width: 1300px;
+    position: relative;
+    top: 750px;
+    left: 150px;
+    transform: translatX(-50%);
+    z-index: -2;
+    border: 2px solid #000;
+}
