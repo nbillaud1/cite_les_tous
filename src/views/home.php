@@ -13,9 +13,9 @@
             <div class="how-to">
                 <h2>Comment jouer</h2>
                 <ol>
-                    <li>Tapez le nom d'un combattant, en français.</li>
+                    <li>Tapez le nom d'un combattant, en français ou en anglais. Les abréviations connues marchent aussi (ZSS, DK, King DDD...).</li>
                     <li>Validez avec Entrée : sa case se révèle dans la grille.</li>
-                    <li>Trouvez-les tous avant la fin du chrono. Les majuscules ne comptent pas, et la pause floute la grille.</li>
+                    <li>Trouvez-les tous avant la fin du chrono. Accents, majuscules, espaces et petites fautes de frappe sont tolérés.</li>
                 </ol>
             </div>
         </div>

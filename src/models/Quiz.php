@@ -13,7 +13,7 @@ class Quiz {
     }
 
     public function getPerso($nomJeux) {
-        $query = "SELECT persos.nom, persos.idPerso, persos.image FROM persos JOIN jeux ON persos.idJeux = jeux.idJeux WHERE jeux.nom = ?";
+        $query = "SELECT persos.nom, persos.alias, persos.idPerso, persos.image FROM persos JOIN jeux ON persos.idJeux = jeux.idJeux WHERE jeux.nom = ?";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([$nomJeux]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

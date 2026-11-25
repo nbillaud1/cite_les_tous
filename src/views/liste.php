@@ -32,7 +32,7 @@
     <div class="grille-persos">
         <?php foreach ($persos as $perso) : ?>
             <div class="perso-container">
-                <div class="perso" data-id="<?php echo $perso['idPerso']; ?>">
+                <div class="perso" data-id="<?php echo $perso['idPerso']; ?>" data-alias="<?php echo htmlspecialchars($perso['alias']); ?>">
                     <img
                         src="imgSSB/cache.png"
                         data-image-reelle="imgSSB/<?php echo htmlspecialchars($perso['image']); ?>"

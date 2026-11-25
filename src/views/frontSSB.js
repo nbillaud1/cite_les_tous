@@ -104,29 +104,82 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    let foundPersos = new Set();
-    function validerGuess(valeurSaisie){
-        let valide = false;
-        persos.forEach(perso => {
-            let nom = perso.querySelector('p').getAttribute('nom-reel');
-            if (valeurSaisie.toLowerCase() === nom.toLowerCase() && !foundPersos.has(nom.toLowerCase())){
-                errorGuess.textContent = "";
-                montrerPerso(perso);
-                guessZone.value = "";
-                valide = true;
-                foundPersos.add(nom.toLowerCase());
+    // ---------- Saisie tolérante ----------
 
-                perso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // "Mr. Game & Watch" -> "mrgamewatch" : sans accents, majuscules, espaces, ponctuation ni « et / and »
+    function normaliser(texte) {
+        return texte.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .split(/[^a-z0-9]+/).filter(mot => mot && mot !== 'et' && mot !== 'and').join('');
+    }
+
+    // Nombre de fautes entre deux mots : lettre en trop, en moins, remplacée, ou deux lettres inversées
+    function distance(a, b) {
+        let d = [];
+        for (let i = 0; i <= a.length; i++) d[i] = [i];
+        for (let j = 0; j <= b.length; j++) d[0][j] = j;
+        for (let i = 1; i <= a.length; i++) {
+            for (let j = 1; j <= b.length; j++) {
+                let cout = a[i - 1] === b[j - 1] ? 0 : 1;
+                d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cout);
+                if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+                    d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+                }
             }
-        });
-        if (valeurSaisie !== "" && !valide){
-            afficherMessage("Personnage invalide ou déjà trouvé", "error");
         }
-        else if (valide) {
-            if (nbPersos > 0) errorGuess.className = ""; // sinon on effacerait le message de victoire
-            guessZone.classList.add('ok');
-            setTimeout(() => guessZone.classList.remove('ok'), 500);
+        return d[a.length][b.length];
+    }
+
+    // Fautes tolérées : aucune sur les noms courts (Roy/Rob, Ken...), 1 dès 5 lettres, 2 dès 10
+    function tolerance(longueur) {
+        return longueur >= 10 ? 2 : longueur >= 5 ? 1 : 0;
+    }
+
+    // Chaque combattant avec son nom et ses alias (noms anglais, abréviations) déjà normalisés
+    let fiches = [...persos].map(perso => ({
+        perso,
+        noms: [perso.querySelector('p').getAttribute('nom-reel'), ...perso.dataset.alias.split('|')]
+            .map(normaliser).filter(Boolean)
+    }));
+
+    // Renvoie le combattant visé par la saisie, ou null si inconnu ou ambigu
+    function trouverPerso(saisie) {
+        let s = normaliser(saisie);
+        if (!s) return null;
+
+        let exact = fiches.find(fiche => fiche.noms.includes(s));
+        if (exact) return exact.perso;
+
+        let meilleure = Infinity, candidats = [];
+        for (let fiche of fiches) {
+            let d = Math.min(...fiche.noms.map(nom =>
+                distance(s, nom) <= tolerance(Math.min(s.length, nom.length)) ? distance(s, nom) : Infinity));
+            if (d < meilleure) { meilleure = d; candidats = [fiche]; }
+            else if (d === meilleure && d !== Infinity) candidats.push(fiche);
         }
+        // Deux combattants aussi proches l'un que l'autre (ex. « Marto » : Mario ou Marth ?) : on refuse
+        return candidats.length === 1 ? candidats[0].perso : null;
+    }
+
+    function validerGuess(valeurSaisie){
+        if (valeurSaisie.trim() === "") return;
+        let perso = trouverPerso(valeurSaisie);
+
+        if (!perso) {
+            afficherMessage("Combattant inconnu, vérifiez l'orthographe", "error");
+            return;
+        }
+        if (perso.closest('.perso-container').classList.contains('found')) {
+            afficherMessage(perso.querySelector('p').textContent + " est déjà trouvé", "error");
+            return;
+        }
+
+        errorGuess.textContent = "";
+        guessZone.value = "";
+        montrerPerso(perso);
+        perso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (nbPersos > 0) errorGuess.className = ""; // sinon on effacerait le message de victoire
+        guessZone.classList.add('ok');
+        setTimeout(() => guessZone.classList.remove('ok'), 500);
     }
 
     // Affiche le portrait et le nom ; classe = 'found' (trouvé) ou 'missed' (révélé après la défaite)
