@@ -1,17 +1,19 @@
     <header class="page-head quiz-head">
         <h1 class="page-title">Cite les tous</h1>
-        <div class="quiz-stats">
-            <p><b id="nb-persos"></b> combattants à trouver</p>
-            <p><b id="chrono">15:00</b> restantes</p>
-            <button id="btn-pause" class="btn btn--ghost" type="button">Pause</button>
-            <a class="btn btn--ghost" href="?action=accueil">Abandonner</a>
-        </div>
+        <a class="btn btn--ghost" href="?action=accueil">Abandonner</a>
     </header>
 
-    <div class="guess-container">
-        <input type="text" id="guess-zone" placeholder="Nom d'un combattant" aria-label="Nom d'un combattant" autocomplete="off" autofocus>
-        <button id="btn-valider" class="btn" type="button">Valider</button>
-        <p id="errorPerso" role="status"></p>
+    <div class="hud">
+        <p class="hud-score"><b id="nb-persos"></b> restants</p>
+        <div class="hud-guess">
+            <input type="text" id="guess-zone" placeholder="Nom d'un combattant" aria-label="Nom d'un combattant" autocomplete="off" autofocus>
+            <button id="btn-valider" class="btn" type="button">Valider</button>
+            <p id="errorPerso" role="status"></p>
+        </div>
+        <div class="hud-time">
+            <b id="chrono">15:00</b>
+            <button id="btn-pause" class="btn btn--ghost" type="button">Pause</button>
+        </div>
     </div>
 
     <div class="grille-persos">
@@ -21,8 +23,7 @@
                     <img
                         src="imgSSB/cache.png"
                         data-image-reelle="imgSSB/<?php echo htmlspecialchars($perso['image']); ?>"
-                        alt=""
-                        width="64" height="64">
+                        alt="">
                     <p nom-reel="<?php echo htmlspecialchars($perso['nom']); ?>">???</p>
                 </div>
             </div>

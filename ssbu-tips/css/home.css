@@ -24,48 +24,6 @@
 .menu:has(.tile--esprits:is(:hover, :focus-visible))  { --hot: var(--esprits); --sym: var(--esprits); }
 .menu:has(.tile--quiz:is(:hover, :focus-visible))     { --hot: var(--quiz); --sym: var(--quiz); }
 
-/* ---------- Tuiles ---------- */
-.tile {
-  --c: var(--smash);
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  column-gap: 18px;
-  padding: 0 26px;
-  overflow: hidden;
-  color: #fff;
-  text-decoration: none;
-  background: var(--c);
-  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
-  transition: transform .2s ease-out, filter .2s;
-  animation: tile-in .5s cubic-bezier(.2, .8, .2, 1) backwards;
-}
-.tile::before { /* ombrage diagonal pour donner du relief */
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(150deg, rgb(255 255 255 / .16) 0 38%, rgb(0 0 0 / .18) 38% 100%);
-  pointer-events: none;
-}
-.tile::after { /* reflet qui balaie la tuile au survol */
-  content: "";
-  position: absolute;
-  inset: -20% auto -20% -40%;
-  width: 30%;
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / .35), transparent);
-  transform: skewX(-20deg) translateX(-100%);
-  pointer-events: none;
-}
-.tile:hover::after, .tile:focus-visible::after { transform: skewX(-20deg) translateX(560%); transition: transform .6s ease-out; }
-.tile:focus-visible { outline: none; filter: brightness(1.12); }
-
-.tile-icon { position: relative; width: 58px; height: 58px; stroke-width: 1.6; }
-.tile-name { position: relative; font: 800 italic 2.5rem/1 var(--display); text-transform: uppercase; }
-.tile-desc { position: relative; grid-column: 2; font-weight: 600; font-size: .95rem; opacity: .88; line-height: 1.3; }
-.tile-name { align-self: end; }
-.tile-desc { align-self: start; margin-top: 4px; }
-.tile-icon { grid-row: span 2; }
 
 .tile--smash    { --c: var(--smash);    grid-area: 1 / 1; }
 .tile--quiz     { --c: var(--quiz);     grid-area: 2 / 1; }
@@ -74,6 +32,7 @@
 .tile--coffre   { --c: var(--coffre);   grid-area: 2 / 3; }
 .tile--en-ligne { --c: var(--en-ligne); grid-area: 3 / 3; }
 .tile--en-ligne { color: #2a1d00; }
+.tile--quiz { color: var(--ink); }
 
 /* Les tuiles se rapprochent de l'emblème au survol */
 .tile:is(.tile--smash, .tile--quiz, .tile--esprits):hover { transform: translateX(8px); }
@@ -83,7 +42,6 @@
 .tile--smash, .tile--extra { animation-delay: .05s; }
 .tile--quiz, .tile--coffre { animation-delay: .15s; }
 .tile--esprits, .tile--en-ligne { animation-delay: .25s; }
-@keyframes tile-in { from { opacity: 0; transform: translateY(14px); } }
 
 /* ---------- Fils et emblème ---------- */
 .hub { grid-area: 1 / 2 / 4 / 3; position: relative; }

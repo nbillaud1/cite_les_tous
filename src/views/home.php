@@ -1,8 +1,21 @@
-        <header class="page-head quiz-intro">
+        <header class="page-head">
             <h1 class="page-title">Cite les tous</h1>
-            <p class="page-lead">Retrouvez les 86 combattants de Super Smash Bros. Ultimate en moins de 15 minutes. Tapez un nom, validez, et sa case se révèle. Les majuscules ne comptent pas.</p>
-            <div class="quiz-actions">
-                <a class="btn" href="?action=startSSB">Lancer le quiz</a>
-                <a class="btn btn--ghost" href="ssbu-tips/index.html">Voir les astuces</a>
-            </div>
+            <p class="page-lead">Le quiz de SSBU Tips : retrouvez de mémoire tous les combattants de Super Smash Bros. Ultimate.</p>
         </header>
+
+        <div class="quiz-home">
+            <a class="tile tile--start" href="?action=startSSB">
+                <svg class="i tile-icon"><use href="ssbu-tips/img/icons.svg#quiz"/></svg>
+                <span class="tile-name">Lancer le quiz</span>
+                <span class="tile-desc">86 combattants, 15 minutes</span>
+            </a>
+
+            <div class="how-to">
+                <h2>Comment jouer</h2>
+                <ol>
+                    <li>Tapez le nom d'un combattant, en français.</li>
+                    <li>Validez avec Entrée : sa case se révèle dans la grille.</li>
+                    <li>Trouvez-les tous avant la fin du chrono. Les majuscules ne comptent pas, et la pause floute la grille.</li>
+                </ol>
+            </div>
+        </div>

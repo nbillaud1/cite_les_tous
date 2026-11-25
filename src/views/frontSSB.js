@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function majNbPerso(){
         txtNbPersos.textContent = nbPersos;
+        document.querySelector('.hud').style.setProperty('--done', 1 - nbPersos / persos.length);
         // errorGuess.textContent = "";
         if (nbPersos === 0){
             afficherMessage("Bravo! Vous avez réussi !", "success");
