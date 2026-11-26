@@ -5,7 +5,9 @@ class Quiz {
 
     public function __construct() {
         try {
-            $this->pdo = new PDO("mysql:host=localhost;dbname=cite_les_tous;charset=utf8mb4", 'root', '');
+            // Identifiants surchargeables par variables d'environnement (hébergeur, CI) ; par défaut ceux de WAMP
+            $hote = getenv('DB_HOST') ?: 'localhost';
+            $this->pdo = new PDO("mysql:host=$hote;dbname=cite_les_tous;charset=utf8mb4", getenv('DB_USER') ?: 'root', getenv('DB_PASS') ?: '');
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $exception) {
             die("Erreur de connexion : " . $exception->getMessage());
