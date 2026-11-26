@@ -12,7 +12,7 @@ PID=$!
 trap 'kill $PID' EXIT
 
 page() { curl -fsS --retry 10 --retry-connrefused --retry-delay 1 "http://127.0.0.1:$PORT/$1"; }
-page 'index.php' > "$OUT/index.html"
+page 'index.php' > "$OUT/cite-les-tous.html"
 page 'index.php?action=startSSB' > "$OUT/quiz.html"
 
 cp -r ssbu-tips imgSSB "$OUT/"
@@ -20,9 +20,17 @@ cp -r src/css "$OUT/src/"
 cp src/views/frontSSB.js "$OUT/src/views/"
 touch "$OUT/.nojekyll"
 
+# En ligne, on arrive sur l'accueil SSBU Tips (le quiz reste à cite-les-tous.html)
+cat > "$OUT/index.html" <<'HTML'
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>SSBU Tips</title>
+<meta http-equiv="refresh" content="0; url=ssbu-tips/index.html"><link rel="canonical" href="ssbu-tips/index.html"></head>
+<body><a href="ssbu-tips/index.html">SSBU Tips</a></body></html>
+HTML
+
 # Les liens vers le routeur PHP deviennent des liens vers les pages générées
-sed -i 's#href="?action=startSSB"#href="quiz.html"#g; s#href="?action=accueil"#href="index.html"#g; s#href="index.php"#href="index.html"#g' "$OUT/index.html" "$OUT/quiz.html"
-sed -i 's#href="../index.php"#href="../index.html"#g' "$OUT"/ssbu-tips/*.html
+sed -i 's#href="?action=startSSB"#href="quiz.html"#g; s#href="?action=accueil"#href="cite-les-tous.html"#g; s#href="index.php"#href="cite-les-tous.html"#g' "$OUT/cite-les-tous.html" "$OUT/quiz.html"
+sed -i 's#href="../index.php"#href="../cite-les-tous.html"#g' "$OUT"/ssbu-tips/*.html
 
 # Garde-fous : base injoignable (die) ou lien PHP oublié = échec du build
 grep -q 'data-id=' "$OUT/quiz.html" || { echo "Grille vide : la base est-elle importée ?" >&2; exit 1; }

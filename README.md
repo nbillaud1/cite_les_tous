@@ -13,6 +13,6 @@ Identifiants MySQL par défaut : `root` sans mot de passe. Pour un autre serveur
 
 ## En ligne (GitHub Pages)
 
-À chaque push sur `main`, le workflow `.github/workflows/pages.yml` importe la base dans un MySQL temporaire, fait tourner le PHP une fois (`build-static.sh`) et publie le HTML généré sur GitHub Pages. Le quiz tourne ensuite entièrement côté navigateur.
+À chaque push sur `main`, le workflow `.github/workflows/pages.yml` importe la base dans un MySQL temporaire, fait tourner le PHP une fois (`build-static.sh`) et publie le HTML généré sur GitHub Pages. Le quiz tourne ensuite entièrement côté navigateur. En ligne, la racine redirige vers l'accueil SSBU Tips et le quiz est à `cite-les-tous.html`.
 
 Pour tester la génération en local : `./build-static.sh` (PHP et la base importée requis), puis servir le dossier `_site/`.
