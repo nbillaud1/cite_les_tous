@@ -74,6 +74,7 @@
 				<h2>Stages compétitifs</h2>
 				<p>Les stages animés sont parfaits pour s'amuser entre amis. Les joueurs qui veulent progresser se tournent plutôt vers les stages dits compétitifs : plats ou avec quelques plateformes fixes, sans danger qui puisse décider d'un combat à leur place.</p>
 				<p>Voici ceux que l'on retrouve le plus souvent en tournoi :</p>
+				<div class="carrousel" role="region" aria-roledescription="carrousel" aria-label="Stages compétitifs">
 				<div class="stages">
 					<a class="stage" href="https://supersmashbros.fandom.com/fr/wiki/Destination_Finale_(Ultimate)"><img src="img/df.jpg" alt="" loading="lazy"><span>Destination Finale</span></a>
 					<a class="stage" href="https://supersmashbros.fandom.com/fr/wiki/Champ_de_Bataille_(Ultimate)"><img src="img/champs_de_bataille.jpg" alt="" loading="lazy"><span>Champ de bataille</span></a>
@@ -84,6 +85,10 @@
 					<a class="stage" href="https://supersmashbros.fandom.com/fr/wiki/Ville_%26_centre-ville"><img src="img/Ville_centre-ville.webp" alt="" loading="lazy"><span>Ville et centre-ville</span></a>
 					<a class="stage" href="https://supersmashbros.fandom.com/fr/wiki/Yoshi%27s_Story"><img src="img/Yoshi_Story.jpg" alt="" loading="lazy"><span>Yoshi's Story</span></a>
 				</div>
+					<p class="carrousel-compteur" aria-live="polite"><span>1</span> / 8</p>
+					<button class="carrousel-btn carrousel-btn--prec" type="button" data-sens="-1" aria-label="Stage précédent"><svg class="i"><use href="img/icons.svg#fleche"/></svg></button>
+					<button class="carrousel-btn carrousel-btn--suiv" type="button" data-sens="1" aria-label="Stage suivant"><svg class="i"><use href="img/icons.svg#fleche"/></svg></button>
+				</div>
 			</section>
 
 			<a class="to-top" href="#haut"><svg class="i"><use href="img/icons.svg#haut"/></svg>Remonter</a>
@@ -91,5 +96,19 @@
 	</main>
 
 	<footer class="footer">SSBU Tips, site de fan non affilié à Nintendo.</footer>
+
+	<script>
+		// Carrousel des stages : les flèches font défiler d'une image (en boucle), le compteur suit
+		const piste = document.querySelector('.stages');
+		const compteur = document.querySelector('.carrousel-compteur span');
+		const actuel = () => Math.round(piste.scrollLeft / piste.clientWidth);
+		document.querySelectorAll('.carrousel-btn').forEach(btn => btn.addEventListener('click', () => {
+			const nb = piste.children.length;
+			const cible = (actuel() + Number(btn.dataset.sens) + nb) % nb;
+			// On vise l'image elle-même : un scrollTo/scrollBy en pixels est parfois annulé par l'accroche (scroll-snap)
+			piste.children[cible].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+		}));
+		piste.addEventListener('scroll', () => compteur.textContent = actuel() + 1);
+	</script>
 </body>
 </html>
